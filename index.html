@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raiz & Ramo - Parintins | Ervas & Saberes Amazônicos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cream-bg': '#F7F5EE',
+            'cream-card': '#EFECE1',
+            'forest-dark': '#1C3328',
+            'forest-light': '#2C4C3E',
+            'accent-amber': '#D4A359',
+            'text-dark': '#2B2E2A',
+            'text-muted': '#626860',
+            'tag-bg': '#E6E2D5',
+          },
+          fontFamily: {
+            serif: ['DM Serif Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Space Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F7F5EE;
+      color: #2B2E2A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-serif-custom {
+      font-family: 'DM Serif Display', serif;
+    }
+    .font-mono-custom {
+      font-family: 'Space Mono', monospace;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-forest-dark selection:text-cream-bg">
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 bg-cream-bg/95 backdrop-blur-md border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#inicio" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full bg-forest-dark flex items-center justify-center text-cream-bg group-hover:bg-forest-light transition-colors">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <path d="M17,8C15.31,8 13.83,8.96 13.08,10.36C12.18,9.5 11,8.96 9.68,8.87L11.5,4H8.5L6.5,9.25C4.5,10.15 3,12.18 3,14.5A6.5,6.5 0 0,0 9.5,21C12.5,21 15,19 15.75,16.25C17.75,15.75 19.25,14 19.41,11.83C20.91,11.5 22,10.13 22,8.5A2.5,2.5 0 0,0 19.5,6C18.12,6 17,7.12 17,8.5M9.5,19C7,19 5,17 5,14.5C5,12.61 6.18,11.03 7.82,10.37L9,15.5H11L9.65,10.11C10.38,10.22 11.06,10.55 11.62,11.08C10.6,12.15 10,13.6 10,15.19C10,17.29 11.71,19 13.81,19H9.5Z" />
+          </svg>
+        </div>
+        <span class="font-serif-custom text-2xl font-bold tracking-tight text-forest-dark">Raiz & Ramo</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-mono-custom text-text-muted">
+        <a href="#inicio" class="hover:text-forest-dark transition-colors border-b-2 border-forest-dark pb-1 text-forest-dark font-bold">Início</a>
+        <a href="#comerciantes" class="hover:text-forest-dark transition-colors">Comerciantes</a>
+        <a href="#produtos" class="hover:text-forest-dark transition-colors">Produtos</a>
+        <a href="#historia" class="hover:text-forest-dark transition-colors">Perfil & História</a>
+        <a href="#impacto" class="hover:text-forest-dark transition-colors">Impacto</a>
+        <a href="#contato" class="hover:text-forest-dark transition-colors">Contato</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="hidden sm:block">
+        <a href="#produtos" class="inline-flex items-center gap-2 border border-forest-dark px-5 py-2.5 rounded-none text-xs uppercase tracking-wider font-mono-custom hover:bg-forest-dark hover:text-cream-bg transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          Explorar Feira
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-forest-dark">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-cream-card border-b border-forest-dark/10 px-4 pt-2 pb-6 space-y-3 font-mono-custom text-xs uppercase tracking-widest">
+      <a href="#inicio" class="block py-2 text-forest-dark font-bold">Início</a>
+      <a href="#comerciantes" class="block py-2 text-text-muted">Comerciantes</a>
+      <a href="#produtos" class="block py-2 text-text-muted">Produtos</a>
+      <a href="#historia" class="block py-2 text-text-muted">Perfil & História</a>
+      <a href="#impacto" class="block py-2 text-text-muted">Impacto</a>
+      <a href="#contato" class="block py-2 text-text-muted">Contato</a>
+    </div>
+  </header>
+
+  <!-- Section 1: Hero -->
+  <section id="inicio" class="py-12 lg:py-20 border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="lg:col-span-6 space-y-8">
+          <h1 class="font-serif-custom text-5xl sm:text-6xl lg:text-7xl text-forest-dark leading-[1.05] tracking-tight">
+            Da terra, <br/>
+            <span class="italic font-normal">para cuidar.</span>
+          </h1>
+          <p class="text-base sm:text-lg text-text-muted max-w-xl font-light leading-relaxed">
+            Ervas, raízes e garrafadas artesanais vendidas por quem conhece cada folha pelo nome em Parintins — e cada tradição ancestral pela história.
+          </p>
+          
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#comerciantes" class="bg-forest-dark text-cream-bg px-7 py-4 text-xs font-mono-custom uppercase tracking-wider flex items-center gap-3 hover:bg-forest-light transition-all shadow-sm">
+              Explorar a feira
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="#historia" class="px-6 py-4 text-xs font-mono-custom uppercase tracking-wider text-forest-dark hover:underline underline-offset-8">
+              Conheça as histórias
+            </a>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="pt-12 grid grid-cols-3 gap-6 border-t border-forest-dark/10">
+            <div>
+              <div class="font-serif-custom text-3xl lg:text-4xl text-forest-dark">40+</div>
+              <div class="font-mono-custom text-[10px] sm:text-xs text-text-muted uppercase mt-1">Famílias Rurais</div>
+            </div>
+            <div>
+              <div class="font-serif-custom text-3xl lg:text-4xl text-forest-dark">60+</div>
+              <div class="font-mono-custom text-[10px] sm:text-xs text-text-muted uppercase mt-1">Ervas da Floresta</div>
+            </div>
+            <div>
+              <div class="font-serif-custom text-3xl lg:text-4xl text-forest-dark">102</div>
+              <div class="font-mono-custom text-[10px] sm:text-xs text-text-muted uppercase mt-1">Anos de Tradição</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Image -->
+        <div class="lg:col-span-6 relative">
+          <div class="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-forest-dark/5 shadow-xl">
+            <img 
+              src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80" 
+              alt="Mãos segurando terra e mudas de plantas medicinais na Amazônia" 
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-6 left-6 right-6 text-cream-bg space-y-2">
+              <span class="font-mono-custom text-[10px] uppercase tracking-widest text-accent-amber block">Origem Verificada · Parintins, AM</span>
+              <p class="font-serif-custom text-2xl sm:text-3xl font-light">Cultivo que respeita o tempo da floresta.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Products Banner -->
+  <section id="produtos" class="py-16 border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <div class="font-mono-custom text-xs text-forest-dark uppercase tracking-widest mb-2 flex items-center gap-2">
+            <span class="text-accent-amber">02</span>
+            <span class="w-8 h-[1px] bg-forest-dark/30"></span>
+            Da Banca Para Sua Casa
+          </div>
+          <h2 class="font-serif-custom text-4xl sm:text-5xl text-forest-dark">Colheitas em destaque</h2>
+        </div>
+        <a href="#contato" class="font-mono-custom text-xs uppercase tracking-wider text-forest-dark hover:underline flex items-center gap-2">
+          Ver todos os produtos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Product 1 -->
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+          <div class="relative aspect-[4/3] bg-amber-100 overflow-hidden">
+            <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Mais Pedido</span>
+            <img src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=800&q=80" alt="Chá de Ervas Regional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest">Garrafada Ancestral</div>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Preparado de Saracura & Sucuba</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Produzido por Dona Fátima Galúcio. Tradicional garrafada para fortalecer a imunidade e auxílio digestivo.</p>
+            <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
+              <span class="font-bold text-forest-dark">R$ 35,00</span>
+              <span class="text-text-muted">Casa da Saúde</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+          <div class="relative aspect-[4/3] bg-stone-200 overflow-hidden">
+            <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Nativo</span>
+            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="Óleo de Andiroba Puríssimo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest">Óleos & Bálsamos</div>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Óleo de Andiroba Puro</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Extração agroecológica artesanal do Rio Uaicurapá por Seu Zé Guerreiro. Excelente anti-inflamatório natural.</p>
+            <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
+              <span class="font-bold text-forest-dark">R$ 28,00</span>
+              <span class="text-text-muted">Bairro Palmares</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+          <div class="relative aspect-[4/3] bg-emerald-100 overflow-hidden">
+            <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Quintal Vivo</span>
+            <img src="https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=800&q=80" alt="Ervas Medicinais Secas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest">Ervas Frescas & Secas</div>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Kit Chás de Quintal</h3>
+            <p class="text-xs text-text-muted leading-relaxed">Capim-santo, folha de graviola e laranjeira cultivados organicamente no quintal da Dona Nazaré de Souza.</p>
+            <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
+              <span class="font-bold text-forest-dark">R$ 18,00</span>
+              <span class="text-text-muted">Djard Vieira</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Quote Section (Golden Amber Accent) -->
+  <section class="py-20 bg-accent-amber/90 text-forest-dark">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="font-mono-custom text-xs uppercase tracking-widest opacity-80">03 — Nosso Propósito</div>
+      <blockquote class="font-serif-custom text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
+        “Não vendemos apenas folhas. Compartilhamos o conhecimento de quem aprendeu a <span class="italic">escutar a floresta</span>.”
+      </blockquote>
+      <div class="pt-4 font-mono-custom text-xs sm:text-sm uppercase tracking-wider">
+        — Seu Zé Guerreiro, erveiro e protetor da Mãe Natureza
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Merchants List Section -->
+  <section id="comerciantes" class="py-16 sm:py-20 border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+        <div class="lg:col-span-7 space-y-3">
+          <div class="font-mono-custom text-xs text-forest-dark uppercase tracking-widest flex items-center gap-2">
+            <span class="text-accent-amber">04</span>
+            <span class="w-8 h-[1px] bg-forest-dark/30"></span>
+            Quem Faz A Feira
+          </div>
+          <h2 class="font-serif-custom text-4xl sm:text-5xl lg:text-6xl text-forest-dark">Gente que cultiva saberes.</h2>
+        </div>
+        <div class="lg:col-span-5 text-sm text-text-muted leading-relaxed">
+          Conheça os erveiros, parteiras e guardiões de Parintins. Histórias vivas, práticas agroecológicas e conhecimentos transmitidos através de gerações amazônicas.
+        </div>
+      </div>
+
+      <!-- Merchant Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Merchant 1: Seu Zé -->
+        <div class="bg-cream-card border border-forest-dark/10 group">
+          <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">01</span>
+            <img src="seuze.jpg" alt="Seu Zé Guerreiro na Casa das Ervas" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-5 space-y-1">
+            <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Casa das Ervas · Palmares</span>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Seu Zé Guerreiro</h3>
+            <p class="text-xs text-text-muted">Erveiro há 37 anos, referência na coleta sustentável de Pau-D'Arco, Pedra-Hume-Caá e Chichuá.</p>
+          </div>
+        </div>
+
+        <!-- Merchant 2: Dona Fátima -->
+        <div class="bg-cream-card border border-forest-dark/10 group">
+          <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">02</span>
+            <img src="donafatima.webp" alt="Dona Fátima Galúcio na Casa da Saúde" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-5 space-y-1">
+            <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Casa da Saúde · Parintins</span>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Fátima Galúcio</h3>
+            <p class="text-xs text-text-muted">Enfermeira e especialista em garrafadas caseiras aprendidas com sua mãe parteira.</p>
+          </div>
+        </div>
+
+        <!-- Merchant 3: Dona Nazaré -->
+        <div class="bg-cream-card border border-forest-dark/10 group">
+          <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">03</span>
+            <img src="donanazare.webp" alt="Dona Nazaré de Souza no seu quintal vivo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-5 space-y-1">
+            <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Quintal Vivo · Bairro Djard Vieira</span>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Nazaré de Souza</h3>
+            <p class="text-xs text-text-muted">Guardiã dos remédios caseiros e chás medicinais cultivados no quintal de casa.</p>
+          </div>
+        </div>
+
+        <!-- Merchant 4: Dona Lilica -->
+        <div class="bg-cream-card border border-forest-dark/10 group">
+          <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">04</span>
+            <img src="lilica.jpg" alt="Dona Lilica curandeira centenária" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+          </div>
+          <div class="p-5 space-y-1">
+            <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Comunidade Interiorana</span>
+            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Lilica (102 anos)</h3>
+            <p class="text-xs text-text-muted">Curandeira centenária, mestra dos rituais, banhos de cheiro e cigarros de tauari.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Profile & Story Detail -->
+  <section id="historia" class="py-16 sm:py-20 border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Image Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="aspect-[3/4] bg-forest-dark/10 overflow-hidden border border-forest-dark/20 shadow-lg">
+            <img src="seuze.jpg" alt="Retrato de Seu Zé Guerreiro" class="w-full h-full object-cover object-top"/>
+          </div>
+          <div class="absolute bottom-4 left-4 bg-cream-bg px-4 py-2 font-mono-custom text-[11px] text-forest-dark border border-forest-dark/10">
+            PERFIL 01 / 40 · Casa das Ervas, Rua Sete de Setembro, Parintins
+          </div>
+        </div>
+
+        <!-- Right Text Content & Timeline -->
+        <div class="lg:col-span-7 space-y-8">
+          <div>
+            <div class="font-mono-custom text-xs text-forest-dark uppercase tracking-widest mb-2 flex items-center gap-2">
+              <span class="text-accent-amber">05</span>
+              <span class="w-8 h-[1px] bg-forest-dark/30"></span>
+              Perfil & História
+            </div>
+            <h2 class="font-serif-custom text-4xl sm:text-5xl text-forest-dark">Seu Zé Guerreiro</h2>
+            <div class="font-mono-custom text-xs text-accent-amber uppercase tracking-wider mt-1">Erveiro & Protetor Florestal · 37 Anos em Parintins</div>
+          </div>
+
+          <blockquote class="border-l-2 border-forest-dark pl-6 font-serif-custom text-2xl text-forest-dark italic">
+            “Nossa Amazônia é rica. Basta saber usar seus benefícios sem acabar com ela. Minha química é a observação da natureza.”
+          </blockquote>
+
+          <p class="text-sm text-text-muted leading-relaxed font-light">
+            Nascido no Pará e radicado em Parintins há quase quatro décadas, José da Saúde Guerreiro mantém na Casa das Ervas o ponto de apoio para mais de 40 famílias rurais da Amazônia. Trabalha em parceria ecológica autorizada pelo IBAMA para extração e comércio de plantas ancestrais.
+          </p>
+
+          <!-- Timeline Grid -->
+          <div class="pt-6 border-t border-forest-dark/10 space-y-4">
+            <div class="font-mono-custom text-xs uppercase tracking-widest text-forest-dark font-bold">Linha do Tempo — Uma vida entre folhas</div>
+            
+            <div class="space-y-3 font-mono-custom text-xs">
+              <div class="flex gap-4 items-baseline">
+                <span class="text-accent-amber font-bold w-12">1981</span>
+                <span class="text-text-muted">Chega a Parintins após trabalhos com seringa e extração de pau-rosa.</span>
+              </div>
+              <div class="flex gap-4 items-baseline">
+                <span class="text-accent-amber font-bold w-12">1998</span>
+                <span class="text-text-muted">Funda a Casa das Ervas no Bairro Palmares, consolidando a medicina florestal.</span>
+              </div>
+              <div class="flex gap-4 items-baseline">
+                <span class="text-accent-amber font-bold w-12">2012</span>
+                <span class="text-text-muted">Ganha repercussão nacional mostrando o valor do mirantã, unha de gato e piranheira.</span>
+              </div>
+              <div class="flex gap-4 items-baseline">
+                <span class="text-accent-amber font-bold w-12">Hoje</span>
+                <span class="text-text-muted">Conecta 40 famílias com feiras regionais e comércio ético agroecológico.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 6: Impact & Metrics -->
+  <section id="impacto" class="py-16 sm:py-20 border-b border-forest-dark/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="space-y-4 max-w-3xl mb-12">
+        <div class="font-mono-custom text-xs text-forest-dark uppercase tracking-widest flex items-center gap-2">
+          <span class="text-accent-amber">06</span>
+          <span class="w-8 h-[1px] bg-forest-dark/30"></span>
+          Impacto Social & Ecológico
+        </div>
+        <h2 class="font-serif-custom text-4xl sm:text-5xl text-forest-dark">Quando a tradição encontra o fortalecimento local.</h2>
+        <p class="text-sm text-text-muted">Resultados do fortalecimento dos produtores de fitoterápicos e erveiros de Parintins.</p>
+      </div>
+
+      <!-- Stat Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-cream-card p-8 border border-forest-dark/10 space-y-2">
+          <div class="font-serif-custom text-5xl text-forest-dark">+104%</div>
+          <div class="font-mono-custom text-xs text-forest-dark font-bold uppercase tracking-wider">Crescimento Renda Familiar</div>
+          <p class="text-xs text-text-muted">Aumento do ganho mensal direto de erveiros e coletores parceiros.</p>
+        </div>
+
+        <div class="bg-cream-card p-8 border border-forest-dark/10 space-y-2">
+          <div class="font-serif-custom text-5xl text-forest-dark">40+</div>
+          <div class="font-mono-custom text-xs text-forest-dark font-bold uppercase tracking-wider">Famílias em Rede</div>
+          <p class="text-xs text-text-muted">Comunidades organizadas em esquema de cooperação comunitária na Amazônia.</p>
+        </div>
+
+        <div class="bg-cream-card p-8 border border-forest-dark/10 space-y-2">
+          <div class="font-serif-custom text-5xl text-forest-dark">100%</div>
+          <div class="font-mono-custom text-xs text-forest-dark font-bold uppercase tracking-wider">Manejo Sustentável</div>
+          <p class="text-xs text-text-muted">Respeito às autorizações ambientais e preservação da floresta viva.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 7: Redesigned Contact Section -->
+  <section id="contato" class="py-16 sm:py-24 border-b border-forest-dark/10 bg-cream-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Tag & Header Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+        
+        <div class="lg:col-span-7 space-y-4">
+          <div class="font-mono-custom text-xs text-forest-dark uppercase tracking-widest flex items-center gap-2">
+            <span class="text-accent-amber">07</span>
+            <span class="w-8 h-[1px] bg-forest-dark/30"></span>
+            Vamos Conversar
+          </div>
+          <h2 class="font-serif-custom text-5xl sm:text-6xl lg:text-7xl text-forest-dark leading-[1.05]">
+            A feira também é <br/>
+            <span class="italic font-normal">encontro.</span>
+          </h2>
+        </div>
+
+        <div class="lg:col-span-5 lg:pt-10">
+          <div class="border-l border-forest-dark/30 pl-6 text-sm text-text-muted leading-relaxed font-light">
+            Quer comprar, vender ou colaborar com a pesquisa? Mande uma mensagem. A gente responde com calma e atenção.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Contact Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Side: Direct Contact Details -->
+        <div class="lg:col-span-5 space-y-10">
+          
+          <!-- Address Item -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-forest-dark/20 flex items-center justify-center shrink-0 text-forest-dark mt-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <span class="font-mono-custom text-[10px] text-text-muted uppercase tracking-widest block">Onde Estamos</span>
+              <p class="font-serif-custom text-xl text-forest-dark">Mercado Municipal & Casa das Ervas</p>
+              <p class="text-xs text-text-muted">Rua Sete de Setembro, nº 1904, Palmares — Parintins, AM</p>
+            </div>
+          </div>
+
+          <!-- Email Item -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-forest-dark/20 flex items-center justify-center shrink-0 text-forest-dark mt-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 002-2H5a2 2 0 0-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <span class="font-mono-custom text-[10px] text-text-muted uppercase tracking-widest block">Escreva</span>
+              <p class="font-serif-custom text-xl text-forest-dark">contato@raizeramo.com.br</p>
+            </div>
+          </div>
+
+          <!-- Phone Item -->
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full border border-forest-dark/20 flex items-center justify-center shrink-0 text-forest-dark mt-1">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <span class="font-mono-custom text-[10px] text-text-muted uppercase tracking-widest block">Fale com a Feira</span>
+              <p class="font-serif-custom text-xl text-forest-dark">(92) 99123-4567</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Clean Form Box -->
+        <div class="lg:col-span-7 bg-cream-card/60 p-8 sm:p-12 border border-forest-dark/10 shadow-sm relative">
+          
+          <div class="flex items-center justify-between mb-8">
+            <h3 class="font-serif-custom text-3xl text-forest-dark">Deixe seu recado</h3>
+            <svg class="w-6 h-6 text-forest-dark/40" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17,8C15.31,8 13.83,8.96 13.08,10.36C12.18,9.5 11,8.96 9.68,8.87L11.5,4H8.5L6.5,9.25C4.5,10.15 3,12.18 3,14.5A6.5,6.5 0 0,0 9.5,21C12.5,21 15,19 15.75,16.25C17.75,15.75 19.25,14 19.41,11.83C20.91,11.5 22,10.13 22,8.5A2.5,2.5 0 0,0 19.5,6C18.12,6 17,7.12 17,8.5Z"/>
+            </svg>
+          </div>
+
+          <form onsubmit="event.preventDefault(); alert('Obrigado pelo recado! Responderemos em breve.');" class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="space-y-1">
+                <label class="font-mono-custom text-[10px] uppercase tracking-widest text-text-muted block">Seu Nome</label>
+                <input type="text" placeholder="Como podemos chamar você?" required class="w-full bg-transparent border-b border-forest-dark/30 py-2 text-sm text-forest-dark focus:outline-none focus:border-forest-dark transition-colors placeholder:text-text-muted/50"/>
+              </div>
+              <div class="space-y-1">
+                <label class="font-mono-custom text-[10px] uppercase tracking-widest text-text-muted block">Seu E-mail</label>
+                <input type="email" placeholder="voce@email.com" required class="w-full bg-transparent border-b border-forest-dark/30 py-2 text-sm text-forest-dark focus:outline-none focus:border-forest-dark transition-colors placeholder:text-text-muted/50"/>
+              </div>
+            </div>
+
+            <div class="space-y-1 pt-2">
+              <label class="font-mono-custom text-[10px] uppercase tracking-widest text-text-muted block">Mensagem</label>
+              <textarea rows="4" placeholder="Escreva aqui seu recado, dúvida ou encomenda de ervas..." required class="w-full bg-transparent border-b border-forest-dark/30 py-2 text-sm text-forest-dark focus:outline-none focus:border-forest-dark transition-colors placeholder:text-text-muted/50 resize-none"></textarea>
+            </div>
+
+            <div class="pt-4 flex justify-end">
+              <button type="submit" class="bg-forest-dark text-cream-bg px-8 py-4 font-mono-custom text-xs uppercase tracking-wider hover:bg-forest-light transition-all flex items-center gap-3">
+                Enviar Mensagem
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 8: Footer -->
+  <footer class="bg-forest-dark text-cream-bg py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-cream-bg/10">
+        
+        <!-- Brand -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-accent-amber flex items-center justify-center text-forest-dark">
+              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                <path d="M17,8C15.31,8 13.83,8.96 13.08,10.36C12.18,9.5 11,8.96 9.68,8.87L11.5,4H8.5L6.5,9.25C4.5,10.15 3,12.18 3,14.5A6.5,6.5 0 0,0 9.5,21C12.5,21 15,19 15.75,16.25C17.75,15.75 19.25,14 19.41,11.83C20.91,11.5 22,10.13 22,8.5A2.5,2.5 0 0,0 19.5,6C18.12,6 17,7.12 17,8.5Z"/>
+              </svg>
+            </div>
+            <span class="font-serif-custom text-2xl font-bold">Raiz & Ramo</span>
+          </div>
+          <p class="text-xs text-cream-bg/70 max-w-sm leading-relaxed font-light">
+            Uma feira digital que aproxima saberes tradicionais, cultivo responsável da Amazônia e pessoas que valorizam a origem do que consomem em Parintins.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="md:col-span-3 space-y-3 font-mono-custom text-xs">
+          <div class="text-accent-amber uppercase tracking-widest mb-2">Visite a Feira</div>
+          <ul class="space-y-2 text-cream-bg/80">
+            <li><a href="#inicio" class="hover:text-cream-bg transition-colors">Início</a></li>
+            <li><a href="#comerciantes" class="hover:text-cream-bg transition-colors">Comerciantes</a></li>
+            <li><a href="#produtos" class="hover:text-cream-bg transition-colors">Produtos</a></li>
+            <li><a href="#historia" class="hover:text-cream-bg transition-colors">Perfil & História</a></li>
+            <li><a href="#impacto" class="hover:text-cream-bg transition-colors">Impacto</a></li>
+            <li><a href="#contato" class="hover:text-cream-bg transition-colors">Contato</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="md:col-span-4 space-y-3">
+          <div class="font-mono-custom text-xs text-accent-amber uppercase tracking-widest">Boletim da Colheita</div>
+          <p class="text-xs text-cream-bg/70">Novidades, produtores e saberes medicinais no seu e-mail.</p>
+          <form onsubmit="event.preventDefault(); alert('Inscrição realizada!');" class="flex border-b border-cream-bg/30 pb-2">
+            <input type="email" placeholder="seu@email.com" class="bg-transparent w-full text-xs text-cream-bg focus:outline-none placeholder:text-cream-bg/40"/>
+            <button type="submit" class="text-accent-amber hover:text-cream-bg">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 text-center font-mono-custom text-[10px] text-cream-bg/50 uppercase tracking-widest">
+        Projeto Parintins · Saberes da Floresta · 2026
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle logic
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  </script>
+</body>
+</html>
