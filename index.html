@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,9 @@
     }
   </script>
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       background-color: #F7F5EE;
       color: #2B2E2A;
@@ -83,7 +86,7 @@
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-forest-dark">
+      <button id="mobile-menu-btn" aria-label="Abrir Menu" class="md:hidden p-2 text-forest-dark">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -191,7 +194,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
         <!-- Product 1 -->
-        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden hover:border-forest-dark/40 transition-colors">
           <div class="relative aspect-[4/3] bg-amber-100 overflow-hidden">
             <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Mais Pedido</span>
             <img src="https://images.unsplash.com/photo-1514733670139-4d87a1941d55?auto=format&fit=crop&w=800&q=80" alt="Chá de Ervas Regional" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -202,13 +205,13 @@
             <p class="text-xs text-text-muted leading-relaxed">Produzido por Dona Fátima Galúcio. Tradicional garrafada para fortalecer a imunidade e auxílio digestivo.</p>
             <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
               <span class="font-bold text-forest-dark">R$ 35,00</span>
-              <span class="text-text-muted">Casa da Saúde</span>
+              <button onclick="selectMerchant('fatima')" class="text-forest-dark hover:underline font-bold">Ver Produtora &rarr;</button>
             </div>
           </div>
         </div>
 
         <!-- Product 2 -->
-        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden hover:border-forest-dark/40 transition-colors">
           <div class="relative aspect-[4/3] bg-stone-200 overflow-hidden">
             <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Nativo</span>
             <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="Óleo de Andiroba Puríssimo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -219,13 +222,13 @@
             <p class="text-xs text-text-muted leading-relaxed">Extração agroecológica artesanal do Rio Uaicurapá por Seu Zé Guerreiro. Excelente anti-inflamatório natural.</p>
             <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
               <span class="font-bold text-forest-dark">R$ 28,00</span>
-              <span class="text-text-muted">Bairro Palmares</span>
+              <button onclick="selectMerchant('ze')" class="text-forest-dark hover:underline font-bold">Ver Produtor &rarr;</button>
             </div>
           </div>
         </div>
 
         <!-- Product 3 -->
-        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden">
+        <div class="bg-cream-card border border-forest-dark/10 group overflow-hidden hover:border-forest-dark/40 transition-colors">
           <div class="relative aspect-[4/3] bg-emerald-100 overflow-hidden">
             <span class="absolute top-4 left-4 z-10 bg-cream-bg px-3 py-1 font-mono-custom text-[10px] uppercase tracking-wider text-forest-dark border border-forest-dark/10">Quintal Vivo</span>
             <img src="https://images.unsplash.com/photo-1515586000433-45406d8e6662?auto=format&fit=crop&w=800&q=80" alt="Ervas Medicinais Secas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
@@ -236,7 +239,7 @@
             <p class="text-xs text-text-muted leading-relaxed">Capim-santo, folha de graviola e laranjeira cultivados organicamente no quintal da Dona Nazaré de Souza.</p>
             <div class="pt-2 flex items-center justify-between border-t border-forest-dark/10 font-mono-custom text-xs">
               <span class="font-bold text-forest-dark">R$ 18,00</span>
-              <span class="text-text-muted">Djard Vieira</span>
+              <button onclick="selectMerchant('nazare')" class="text-forest-dark hover:underline font-bold">Ver Produtora &rarr;</button>
             </div>
           </div>
         </div>
@@ -272,7 +275,7 @@
           <h2 class="font-serif-custom text-4xl sm:text-5xl lg:text-6xl text-forest-dark">Gente que cultiva saberes.</h2>
         </div>
         <div class="lg:col-span-5 text-sm text-text-muted leading-relaxed">
-          Conheça os erveiros, parteiras e guardiões de Parintins. Histórias vivas, práticas agroecológicas e conhecimentos transmitidos através de gerações amazônicas.
+          Clique em qualquer card abaixo para ver em detalhes a trajetória, local de atendimento e história de cada guardião da medicina da floresta em Parintins.
         </div>
       </div>
 
@@ -280,53 +283,65 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Merchant 1: Seu Zé -->
-        <div class="bg-cream-card border border-forest-dark/10 group">
+        <div onclick="selectMerchant('ze')" class="bg-cream-card border border-forest-dark/10 group cursor-pointer hover:border-forest-dark hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
-            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">01</span>
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10 border border-forest-dark/20">01</span>
             <img src="seuze.jpg" alt="Seu Zé Guerreiro na Casa das Ervas" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"/>
+            <div class="absolute inset-0 bg-forest-dark/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="bg-forest-dark text-cream-bg text-[10px] font-mono-custom px-3 py-1.5 uppercase tracking-wider w-full text-center">Ver Perfil Completo &rarr;</span>
+            </div>
           </div>
           <div class="p-5 space-y-1">
             <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Casa das Ervas · Palmares</span>
-            <h3 class="font-serif-custom text-2xl text-forest-dark">Seu Zé Guerreiro</h3>
+            <h3 class="font-serif-custom text-2xl text-forest-dark group-hover:text-forest-light transition-colors">Seu Zé Guerreiro</h3>
             <p class="text-xs text-text-muted">Erveiro há 37 anos, referência na coleta sustentável de Pau-D'Arco, Pedra-Hume-Caá e Chichuá.</p>
           </div>
         </div>
 
         <!-- Merchant 2: Dona Fátima -->
-        <div class="bg-cream-card border border-forest-dark/10 group">
+        <div onclick="selectMerchant('fatima')" class="bg-cream-card border border-forest-dark/10 group cursor-pointer hover:border-forest-dark hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
-            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">02</span>
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10 border border-forest-dark/20">02</span>
             <img src="donafatima.webp" alt="Dona Fátima Galúcio na Casa da Saúde" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+            <div class="absolute inset-0 bg-forest-dark/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="bg-forest-dark text-cream-bg text-[10px] font-mono-custom px-3 py-1.5 uppercase tracking-wider w-full text-center">Ver Perfil Completo &rarr;</span>
+            </div>
           </div>
           <div class="p-5 space-y-1">
             <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Casa da Saúde · Parintins</span>
-            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Fátima Galúcio</h3>
+            <h3 class="font-serif-custom text-2xl text-forest-dark group-hover:text-forest-light transition-colors">Dona Fátima Galúcio</h3>
             <p class="text-xs text-text-muted">Enfermeira e especialista em garrafadas caseiras aprendidas com sua mãe parteira.</p>
           </div>
         </div>
 
         <!-- Merchant 3: Dona Nazaré -->
-        <div class="bg-cream-card border border-forest-dark/10 group">
+        <div onclick="selectMerchant('nazare')" class="bg-cream-card border border-forest-dark/10 group cursor-pointer hover:border-forest-dark hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
-            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">03</span>
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10 border border-forest-dark/20">03</span>
             <img src="donanazare.webp" alt="Dona Nazaré de Souza no seu quintal vivo" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+            <div class="absolute inset-0 bg-forest-dark/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="bg-forest-dark text-cream-bg text-[10px] font-mono-custom px-3 py-1.5 uppercase tracking-wider w-full text-center">Ver Perfil Completo &rarr;</span>
+            </div>
           </div>
           <div class="p-5 space-y-1">
             <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Quintal Vivo · Bairro Djard Vieira</span>
-            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Nazaré de Souza</h3>
+            <h3 class="font-serif-custom text-2xl text-forest-dark group-hover:text-forest-light transition-colors">Dona Nazaré de Souza</h3>
             <p class="text-xs text-text-muted">Guardiã dos remédios caseiros e chás medicinais cultivados no quintal de casa.</p>
           </div>
         </div>
 
         <!-- Merchant 4: Dona Lilica -->
-        <div class="bg-cream-card border border-forest-dark/10 group">
+        <div onclick="selectMerchant('lilica')" class="bg-cream-card border border-forest-dark/10 group cursor-pointer hover:border-forest-dark hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           <div class="relative aspect-[3/4] bg-stone-300 overflow-hidden">
-            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10">04</span>
+            <span class="absolute top-3 right-3 w-8 h-8 rounded-full bg-cream-bg text-forest-dark font-mono-custom text-xs flex items-center justify-center font-bold z-10 border border-forest-dark/20">04</span>
             <img src="lilica.jpg" alt="Dona Lilica curandeira centenária" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"/>
+            <div class="absolute inset-0 bg-forest-dark/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="bg-forest-dark text-cream-bg text-[10px] font-mono-custom px-3 py-1.5 uppercase tracking-wider w-full text-center">Ver Perfil Completo &rarr;</span>
+            </div>
           </div>
           <div class="p-5 space-y-1">
             <span class="font-mono-custom text-[10px] text-accent-amber uppercase tracking-widest block">Comunidade Interiorana</span>
-            <h3 class="font-serif-custom text-2xl text-forest-dark">Dona Lilica (102 anos)</h3>
+            <h3 class="font-serif-custom text-2xl text-forest-dark group-hover:text-forest-light transition-colors">Dona Lilica (102 anos)</h3>
             <p class="text-xs text-text-muted">Curandeira centenária, mestra dos rituais, banhos de cheiro e cigarros de tauari.</p>
           </div>
         </div>
@@ -335,7 +350,7 @@
     </div>
   </section>
 
-  <!-- Section 5: Profile & Story Detail -->
+  <!-- Section 5: Dynamic Profile & Story Detail -->
   <section id="historia" class="py-16 sm:py-20 border-b border-forest-dark/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -344,10 +359,10 @@
         <!-- Left Image Card -->
         <div class="lg:col-span-5 relative">
           <div class="aspect-[3/4] bg-forest-dark/10 overflow-hidden border border-forest-dark/20 shadow-lg">
-            <img src="seuze.jpg" alt="Retrato de Seu Zé Guerreiro" class="w-full h-full object-cover object-top"/>
+            <img id="profile-img" src="seuze.jpg" alt="Retrato do comerciante" class="w-full h-full object-cover object-top transition-all duration-300"/>
           </div>
-          <div class="absolute bottom-4 left-4 bg-cream-bg px-4 py-2 font-mono-custom text-[11px] text-forest-dark border border-forest-dark/10">
-            PERFIL 01 / 40 · Casa das Ervas, Rua Sete de Setembro, Parintins
+          <div id="profile-tag" class="absolute bottom-4 left-4 bg-cream-bg px-4 py-2 font-mono-custom text-[11px] text-forest-dark border border-forest-dark/10 shadow-sm">
+            PERFIL 01 / 04 · Casa das Ervas, Rua Sete de Setembro, Parintins
           </div>
         </div>
 
@@ -359,15 +374,15 @@
               <span class="w-8 h-[1px] bg-forest-dark/30"></span>
               Perfil & História
             </div>
-            <h2 class="font-serif-custom text-4xl sm:text-5xl text-forest-dark">Seu Zé Guerreiro</h2>
-            <div class="font-mono-custom text-xs text-accent-amber uppercase tracking-wider mt-1">Erveiro & Protetor Florestal · 37 Anos em Parintins</div>
+            <h2 id="profile-name" class="font-serif-custom text-4xl sm:text-5xl text-forest-dark">Seu Zé Guerreiro</h2>
+            <div id="profile-title" class="font-mono-custom text-xs text-accent-amber uppercase tracking-wider mt-1">Erveiro & Prototor Florestal · 37 Anos em Parintins</div>
           </div>
 
-          <blockquote class="border-l-2 border-forest-dark pl-6 font-serif-custom text-2xl text-forest-dark italic">
+          <blockquote id="profile-quote" class="border-l-2 border-forest-dark pl-6 font-serif-custom text-2xl text-forest-dark italic">
             “Nossa Amazônia é rica. Basta saber usar seus benefícios sem acabar com ela. Minha química é a observação da natureza.”
           </blockquote>
 
-          <p class="text-sm text-text-muted leading-relaxed font-light">
+          <p id="profile-bio" class="text-sm text-text-muted leading-relaxed font-light">
             Nascido no Pará e radicado em Parintins há quase quatro décadas, José da Saúde Guerreiro mantém na Casa das Ervas o ponto de apoio para mais de 40 famílias rurais da Amazônia. Trabalha em parceria ecológica autorizada pelo IBAMA para extração e comércio de plantas ancestrais.
           </p>
 
@@ -375,7 +390,7 @@
           <div class="pt-6 border-t border-forest-dark/10 space-y-4">
             <div class="font-mono-custom text-xs uppercase tracking-widest text-forest-dark font-bold">Linha do Tempo — Uma vida entre folhas</div>
             
-            <div class="space-y-3 font-mono-custom text-xs">
+            <div id="profile-timeline" class="space-y-3 font-mono-custom text-xs">
               <div class="flex gap-4 items-baseline">
                 <span class="text-accent-amber font-bold w-12">1981</span>
                 <span class="text-text-muted">Chega a Parintins após trabalhos com seringa e extração de pau-rosa.</span>
@@ -442,7 +457,7 @@
     </div>
   </section>
 
-  <!-- Section 7: Redesigned Contact Section -->
+  <!-- Section 7: Contact Section -->
   <section id="contato" class="py-16 sm:py-24 border-b border-forest-dark/10 bg-cream-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -528,7 +543,7 @@
             </svg>
           </div>
 
-          <form onsubmit="event.preventDefault(); alert('Obrigado pelo recado! Responderemos em breve.');" class="space-y-6">
+          <form id="contact-form" class="space-y-6">
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div class="space-y-1">
@@ -545,6 +560,8 @@
               <label class="font-mono-custom text-[10px] uppercase tracking-widest text-text-muted block">Mensagem</label>
               <textarea rows="4" placeholder="Escreva aqui seu recado, dúvida ou encomenda de ervas..." required class="w-full bg-transparent border-b border-forest-dark/30 py-2 text-sm text-forest-dark focus:outline-none focus:border-forest-dark transition-colors placeholder:text-text-muted/50 resize-none"></textarea>
             </div>
+
+            <div id="form-message" class="hidden text-xs font-mono-custom p-3 bg-forest-dark text-cream-bg"></div>
 
             <div class="pt-4 flex justify-end">
               <button type="submit" class="bg-forest-dark text-cream-bg px-8 py-4 font-mono-custom text-xs uppercase tracking-wider hover:bg-forest-light transition-all flex items-center gap-3">
@@ -602,14 +619,15 @@
         <div class="md:col-span-4 space-y-3">
           <div class="font-mono-custom text-xs text-accent-amber uppercase tracking-widest">Boletim da Colheita</div>
           <p class="text-xs text-cream-bg/70">Novidades, produtores e saberes medicinais no seu e-mail.</p>
-          <form onsubmit="event.preventDefault(); alert('Inscrição realizada!');" class="flex border-b border-cream-bg/30 pb-2">
-            <input type="email" placeholder="seu@email.com" class="bg-transparent w-full text-xs text-cream-bg focus:outline-none placeholder:text-cream-bg/40"/>
-            <button type="submit" class="text-accent-amber hover:text-cream-bg">
+          <form id="newsletter-form" class="flex border-b border-cream-bg/30 pb-2">
+            <input type="email" placeholder="seu@email.com" required class="bg-transparent w-full text-xs text-cream-bg focus:outline-none placeholder:text-cream-bg/40"/>
+            <button type="submit" aria-label="Inscrever-se" class="text-accent-amber hover:text-cream-bg">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
               </svg>
             </button>
           </form>
+          <div id="newsletter-message" class="hidden text-[10px] font-mono-custom text-accent-amber">Inscrição realizada com sucesso!</div>
         </div>
 
       </div>
@@ -623,6 +641,103 @@
   </footer>
 
   <script>
+    // Data store for all merchants
+    const merchantsData = {
+      ze: {
+        img: 'seuze.jpg',
+        tag: 'PERFIL 01 / 04 · Casa das Ervas, Rua Sete de Setembro, Parintins',
+        name: 'Seu Zé Guerreiro',
+        title: 'Erveiro & Protetor Florestal · 37 Anos em Parintins',
+        quote: '“Nossa Amazônia é rica. Basta saber usar seus benefícios sem acabar com ela. Minha química é a observação da natureza.”',
+        bio: 'Nascido no Pará e radicado em Parintins há quase quatro décadas, José da Saúde Guerreiro mantém na Casa das Ervas o ponto de apoio para mais de 40 famílias rurais da Amazônia. Trabalha em parceria ecológica autorizada pelo IBAMA para extração e comércio de plantas ancestrais.',
+        timeline: [
+          { year: '1981', text: 'Chega a Parintins após trabalhos com seringa e extração de pau-rosa.' },
+          { year: '1998', text: 'Funda a Casa das Ervas no Bairro Palmares, consolidando a medicina florestal.' },
+          { year: '2012', text: 'Ganha repercussão nacional mostrando o valor do mirantã, unha de gato e piranheira.' },
+          { year: 'Hoje', text: 'Conecta 40 famílias com feiras regionais e comércio ético agroecológico.' }
+        ]
+      },
+      fatima: {
+        img: 'donafatima.webp',
+        tag: 'PERFIL 02 / 04 · Casa da Saúde, Centro, Parintins',
+        name: 'Dona Fátima Galúcio',
+        title: 'Especialista em Garrafadas & Manipulação Herbal · Parintins',
+        quote: '“A garrafada cura porque junta a força da casca com a fé de quem prepara. Aprendi com minha mãe parteira e levo adiante.”',
+        bio: 'Com vasta experiência na área da saúde e tradição familiar parteira, Dona Fátima transforma raízes como saracura, sucuba e pedra-hume-caá em xaropes e garrafadas medicinais com precisão e amor ao próximo.',
+        timeline: [
+          { year: '1990', text: 'Aprende os segredos das misturas de chás e xaropes medicinais na infância.' },
+          { year: '2005', text: 'Inicia o atendimento comunitário na feira com soluções naturais para imunidade.' },
+          { year: '2018', text: 'Cria linha própria de preparados e elixires medicinais da Amazônia.' },
+          { year: 'Hoje', text: 'Atende centenas de parintinenses e visitantes na sua banca artesanal.' }
+        ]
+      },
+      nazare: {
+        img: 'donanazare.webp',
+        tag: 'PERFIL 03 / 04 · Quintal Vivo, Bairro Djard Vieira, Parintins',
+        name: 'Dona Nazaré de Souza',
+        title: 'Guardiã de sementes & Mestra dos chás de quintal',
+        quote: '“No meu quintal não entra veneno. Cada folha de capim-santo e de graviola tem a força do orvalho e da terra limpa.”',
+        bio: 'Dona Nazaré mantém um dos quintais medicinais mais diversos de Parintins. Cultiva de forma 100% orgânica mais de 30 espécies de plantas para infusões, banhos e alívio de dores do cotidiano.',
+        timeline: [
+          { year: '1985', text: 'Inicia o cultivo de plantas medicinais no seu quintal em Parintins.' },
+          { year: '2002', text: 'Passa a distribuir ervas frescas para vizinhos e feirantes do município.' },
+          { year: '2019', text: 'Certifica seu cultivo comunitário livre de agrotóxicos.' },
+          { year: 'Hoje', text: 'Referência local na colheita diária de ervas aromáticas e digestivas.' }
+        ]
+      },
+      lilica: {
+        img: 'lilica.jpg',
+        tag: 'PERFIL 04 / 04 · Comunidade Interiorana, Parintins',
+        name: 'Dona Lilica (102 anos)',
+        title: 'Centenária Curandeira & Mestra de Reza e Banhos',
+        quote: '“O segredo da vida longa é a paz no coração, o banho de cheiro na hora certa e o respeito pelas entidades da mata.”',
+        bio: 'Com mais de um século de sabedoria vivida na floresta, Dona Lilica é a curandeira mais antiga da região. Seus conhecimentos em benzeduras, rezas e rezos com cigarros de tauari curaram gerações de ribeirinhos.',
+        timeline: [
+          { year: '1924', text: 'Nasce na comunidade ribeirinha e aprende orações com os avós.' },
+          { year: '1950', text: 'Se consolida como parteira e curandeira principal do alto rio.' },
+          { year: '2000', text: 'Recebe homenagens de pesquisadores e etnobotânicos pelo saber preservado.' },
+          { year: 'Hoje', text: 'Com 102 anos, continua sendo o farol espiritual da tradição comunitária.' }
+        ]
+      }
+    };
+
+    // Function to update profile card dynamically and scroll
+    function selectMerchant(key) {
+      const data = merchantsData[key];
+      if (!data) return;
+
+      const imgEl = document.getElementById('profile-img');
+      const tagEl = document.getElementById('profile-tag');
+      const nameEl = document.getElementById('profile-name');
+      const titleEl = document.getElementById('profile-title');
+      const quoteEl = document.getElementById('profile-quote');
+      const bioEl = document.getElementById('profile-bio');
+      const timelineEl = document.getElementById('profile-timeline');
+
+      // Update contents
+      imgEl.src = data.img;
+      imgEl.alt = data.name;
+      tagEl.textContent = data.tag;
+      nameEl.textContent = data.name;
+      titleEl.textContent = data.title;
+      quoteEl.textContent = data.quote;
+      bioEl.textContent = data.bio;
+
+      // Rebuild timeline HTML
+      timelineEl.innerHTML = data.timeline.map(item => `
+        <div class="flex gap-4 items-baseline">
+          <span class="text-accent-amber font-bold w-12">${item.year}</span>
+          <span class="text-text-muted">${item.text}</span>
+        </div>
+      `).join('');
+
+      // Scroll smoothly to section 5
+      const targetSection = document.getElementById('historia');
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
     // Mobile menu toggle logic
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -630,6 +745,38 @@
     if (menuBtn && mobileMenu) {
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+
+    // Contact Form Handler
+    const contactForm = document.getElementById('contact-form');
+    const formMsg = document.getElementById('form-message');
+    if (contactForm && formMsg) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        formMsg.textContent = 'Obrigado pelo recado! Sua mensagem foi enviada com sucesso.';
+        formMsg.classList.remove('hidden');
+        contactForm.reset();
+        setTimeout(() => formMsg.classList.add('hidden'), 5000);
+      });
+    }
+
+    // Newsletter Form Handler
+    const newsForm = document.getElementById('newsletter-form');
+    const newsMsg = document.getElementById('newsletter-message');
+    if (newsForm && newsMsg) {
+      newsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        newsMsg.classList.remove('hidden');
+        newsForm.reset();
+        setTimeout(() => newsMsg.classList.add('hidden'), 5000);
       });
     }
   </script>
